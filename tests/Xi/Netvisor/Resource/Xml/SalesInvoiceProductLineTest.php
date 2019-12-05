@@ -68,4 +68,24 @@ class SalesInvoiceProductLineTest extends XmlTestCase
         $this->assertContains($name2, $xml);
         $this->assertContains($item, $xml);
     }
+
+    /**
+     * @dataProvider unitPriceTypeProvider
+     */
+    public function testSetUnitPriceType($type)
+    {
+        $this->invoiceProductLine->setUnitPriceType($type);
+
+        $xml = $this->toXml($this->invoiceProductLine);
+
+        $this->assertXmlContainsTagWithAttributes('productunitprice', array('type' => $type), $xml);
+    }
+
+    public function unitPriceTypeProvider()
+    {
+        return [
+            [SalesInvoiceProductLine::UNIT_PRICE_TYPE_WITH_VAT],
+            [SalesInvoiceProductLine::UNIT_PRICE_TYPE_WITHOUT_VAT],
+        ];
+    }
 }

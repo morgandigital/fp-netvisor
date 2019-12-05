@@ -6,9 +6,6 @@ use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 
 class AttributeElementTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @test
-     */
     public function testConstructor()
     {
         $value = 'Test value';
@@ -25,9 +22,6 @@ class AttributeElementTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($attributes, $attributeElement->getAttributes());
     }
 
-    /**
-     * @test
-     */
     public function testSetAttribute()
     {
         $key = 'test';
