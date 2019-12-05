@@ -44,7 +44,7 @@ class SalesInvoiceProductLine
      * @param string $item
      * @return self
      */
-    public function addDimension($name, $item): self
+    public function addDimension($name, $item)
     {
         $this->dimensions[] = new Dimension($name, $item);
         return $this;
