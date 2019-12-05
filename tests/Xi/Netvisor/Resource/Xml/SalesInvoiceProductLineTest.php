@@ -46,4 +46,26 @@ class SalesInvoiceProductLineTest extends XmlTestCase
 
         $this->assertXmlContainsTagWithValue('salesinvoiceproductlinequantity', 5, $xml);
     }
+
+    /**
+     * @test
+     */
+    public function xmlHasAddedDimensionLines()
+    {
+        $name = 'Test dimension name';
+        $item = 'Test dimension item';
+        $name2 = 'Another test dimension name';
+        $item2 = 'Another test dimension item';
+
+        $this->invoiceProductLine->addDimension($name, $item);
+        $this->invoiceProductLine->addDimension($name2, $item2);
+
+        $xml = $this->toXml($this->invoiceProductLine);
+
+        $this->assertSame(2, substr_count($xml, '<dimensionname>'));
+        $this->assertContains($name, $xml);
+        $this->assertContains($item, $xml);
+        $this->assertContains($name2, $xml);
+        $this->assertContains($item, $xml);
+    }
 }
