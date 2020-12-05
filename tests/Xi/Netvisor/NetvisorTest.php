@@ -14,7 +14,7 @@ use GuzzleHttp\Psr7\Response;
 use Xi\Netvisor\Resource\Xml\PurchaseInvoice;
 use Xi\Netvisor\Resource\Xml\PurchaseInvoiceState;
 
-class NetvisorTest extends \PHPUnit_Framework_TestCase
+class NetvisorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Netvisor
@@ -34,7 +34,7 @@ class NetvisorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->client = $this->getMockBuilder('GuzzleHttp\Client')
             ->disableOriginalConstructor()
@@ -53,6 +53,8 @@ class NetvisorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->netvisor = new Netvisor($this->client, $this->config, new Validate());
+
+        $this->assertInstanceOf('Xi\Netvisor\Netvisor', $this->netvisor);
     }
 
     /**
@@ -92,9 +94,13 @@ class NetvisorTest extends \PHPUnit_Framework_TestCase
      */
     public function throwsIfXmlIsNotValid()
     {
-        $this->setExpectedException('Xi\Netvisor\Exception\NetvisorException', 'XML is not valid according to DTD');
+        try {
+            $this->netvisor->requestWithBody(new TestResource(), 'service', array(), null);
+        } catch (\Xi\Netvisor\Exception\NetvisorException $e) {
+            return;
+        }
 
-        $this->netvisor->requestWithBody(new TestResource(), 'service', array(), null);
+        $this->fail('NetvisorException was not raised');
     }
 
     /**

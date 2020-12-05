@@ -13,7 +13,7 @@ class SalesInvoiceProductLineTest extends XmlTestCase
      */
     private $invoiceProductLine;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -37,7 +37,7 @@ class SalesInvoiceProductLineTest extends XmlTestCase
         $this->assertXmlContainsTagWithAttributes('productidentifier', array('type' => 'netvisor'), $xml);
 
         $this->assertXmlContainsTagWithValue('productname', substr(static::LONG_PRODUCT_NAmE, 0, 200), $xml);
-        $this->assertNotContains(static::LONG_PRODUCT_NAmE, $xml);
+        $this->assertStringNotContainsString(static::LONG_PRODUCT_NAmE, $xml);
 
         $this->assertXmlContainsTagWithValue('productunitprice', '1,23', $xml);
         $this->assertXmlContainsTagWithAttributes('productunitprice', array('type' => 'net'), $xml);
@@ -64,10 +64,10 @@ class SalesInvoiceProductLineTest extends XmlTestCase
         $xml = $this->toXml($this->invoiceProductLine);
 
         $this->assertSame(2, substr_count($xml, '<dimensionname>'));
-        $this->assertContains($name, $xml);
-        $this->assertContains($item, $xml);
-        $this->assertContains($name2, $xml);
-        $this->assertContains($item, $xml);
+        $this->assertStringContainsString($name, $xml);
+        $this->assertStringContainsString($item, $xml);
+        $this->assertStringContainsString($name2, $xml);
+        $this->assertStringContainsString($item, $xml);
     }
 
     /**

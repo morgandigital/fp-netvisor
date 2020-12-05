@@ -7,7 +7,7 @@ use Xi\Netvisor\Component\Request;
 use Xi\Netvisor\Config;
 use GuzzleHttp\Client;
 
-class RequestTest extends \PHPUnit_Framework_TestCase
+class RequestTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Request
@@ -19,7 +19,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     private $client;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -91,15 +91,16 @@ LUS;
                 new Response('200', array(), $xmlResponse)
             ));
 
-        $this->setExpectedException(
-            'Xi\Netvisor\Exception\NetvisorException',
-            'AUTHENTICATION_FAILED :: Integraatiokumppania ei löydy, katso dokumentaatio'
-        );
+        try {
+            $this->request->post(
+                '<?xml>',
+                'accounting'
+            );
+        } catch (\Xi\Netvisor\Exception\NetvisorException $e) {
+            return;
+        }
 
-        $this->request->post(
-            '<?xml>',
-            'accounting'
-        );
+        $this->fail('NetvisorException was not raised');
     }
 
     /**

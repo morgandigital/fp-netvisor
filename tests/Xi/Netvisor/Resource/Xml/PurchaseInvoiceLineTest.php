@@ -12,7 +12,7 @@ class PurchaseInvoiceLineTest extends XmlTestCase
      */
     private $invoiceLine;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -47,14 +47,14 @@ class PurchaseInvoiceLineTest extends XmlTestCase
         );
 
         $this->assertXmlContainsTagWithValue('productname', substr($name, 0, 200), $xml);
-        $this->assertNotContains($name, $xml);
+        $this->assertStringNotContainsString($name, $xml);
 
         $this->assertXmlContainsTagWithValue('deliveredamount', $amount, $xml);
         $this->assertXmlContainsTagWithValue('unitprice', $unitPrice, $xml);
         $this->assertXmlContainsTagWithValue('vatpercent', $vatPercent, $xml);
         
         $this->assertXmlContainsTagWithValue('linesum', round($lineSum, 2), $xml);
-        $this->assertNotContains((string) $lineSum, $xml);
+        $this->assertStringNotContainsString((string) $lineSum, $xml);
         $this->assertXmlContainsTagWithAttributes('linesum', array('type' => 'brutto'), $xml);
     }
 
@@ -74,10 +74,10 @@ class PurchaseInvoiceLineTest extends XmlTestCase
         $xml = $this->toXml($this->invoiceLine);
 
         $this->assertSame(2, substr_count($xml, '<dimensionname>'));
-        $this->assertContains($name, $xml);
-        $this->assertContains($item, $xml);
-        $this->assertContains($name2, $xml);
-        $this->assertContains($item, $xml);
+        $this->assertStringContainsString($name, $xml);
+        $this->assertStringContainsString($item, $xml);
+        $this->assertStringContainsString($name2, $xml);
+        $this->assertStringContainsString($item, $xml);
     }
 
     public function testSetAccountingAccount()

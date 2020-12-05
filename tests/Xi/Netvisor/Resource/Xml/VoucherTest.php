@@ -12,7 +12,7 @@ class VoucherTest extends XmlTestCase
      */
     private $voucher;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -46,7 +46,7 @@ class VoucherTest extends XmlTestCase
 
         $xml = $this->toXml($this->voucher->getSerializableObject());
 
-        $this->assertContains('voucherline', $xml);
+        $this->assertStringContainsString('voucherline', $xml);
         $this->assertXmlContainsTagWithValue('linesum', 0, $xml);
         $this->assertSame(2, substr_count($xml, '<voucherline>'));
 

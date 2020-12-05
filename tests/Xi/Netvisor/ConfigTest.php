@@ -4,7 +4,7 @@ namespace Xi\Netvisor\Component;
 
 use Xi\Netvisor\Config;
 
-class ConfigTest extends \PHPUnit_Framework_TestCase
+class ConfigTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
