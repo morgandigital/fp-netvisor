@@ -4,7 +4,7 @@ namespace Xi\Netvisor\Resource\Xml\Component;
 
 use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
 
-class AttributeElementTest extends \PHPUnit_Framework_TestCase
+class AttributeElementTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstructor()
     {

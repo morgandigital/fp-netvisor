@@ -12,7 +12,7 @@ class PurchaseInvoiceTest extends XmlTestCase
      */
     private $invoice;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -66,7 +66,7 @@ class PurchaseInvoiceTest extends XmlTestCase
         $this->assertXmlContainsTagWithAttributes('duedate', array('format' => 'ansi'), $xml);
 
         $this->assertXmlContainsTagWithValue('amount', round($amount, 2), $xml);
-        $this->assertNotContains((string) $amount, $xml);
+        $this->assertStringNotContainsString((string) $amount, $xml);
     }
 
     /**
@@ -84,8 +84,8 @@ class PurchaseInvoiceTest extends XmlTestCase
 
         $xml = $this->toXml($this->invoice->getSerializableObject());
 
-        $this->assertContains('purchaseinvoicelines', $xml);
-        $this->assertContains('purchaseinvoiceline', $xml);
+        $this->assertStringContainsString('purchaseinvoicelines', $xml);
+        $this->assertStringContainsString('purchaseinvoiceline', $xml);
 
         $this->assertXmlContainsTagWithValue('productname', 'Name 1', $xml);
         $this->assertXmlContainsTagWithValue('productname', 'Name 2', $xml);
@@ -105,8 +105,8 @@ class PurchaseInvoiceTest extends XmlTestCase
 
         $xml = $this->toXml($this->invoice->getSerializableObject());
 
-        $this->assertContains('purchaseinvoiceattachments', $xml);
-        $this->assertContains('purchaseinvoiceattachment', $xml);
+        $this->assertStringContainsString('purchaseinvoiceattachments', $xml);
+        $this->assertStringContainsString('purchaseinvoiceattachment', $xml);
 
         $this->assertXmlContainsTagWithValue('attachmentdescription', 'Desc 1', $xml);
         $this->assertXmlContainsTagWithValue('attachmentdescription', 'Desc 2', $xml);
@@ -131,7 +131,7 @@ class PurchaseInvoiceTest extends XmlTestCase
         $xml = $this->toXml($this->invoice->getSerializableObject());
 
         $this->assertXmlContainsTagWithValue('comment', substr($comment, 0, 255), $xml);
-        $this->assertNotContains($comment, $xml);
+        $this->assertStringNotContainsString($comment, $xml);
     }
 
     /**

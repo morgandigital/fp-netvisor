@@ -12,7 +12,7 @@ class VoucherLineTest extends XmlTestCase
      */
     private $voucherLine;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -59,10 +59,10 @@ class VoucherLineTest extends XmlTestCase
         $xml = $this->toXml($this->voucherLine);
 
         $this->assertSame(2, substr_count($xml, '<dimensionname>'));
-        $this->assertContains($name, $xml);
-        $this->assertContains($item, $xml);
-        $this->assertContains($name2, $xml);
-        $this->assertContains($item, $xml);
+        $this->assertStringContainsString($name, $xml);
+        $this->assertStringContainsString($item, $xml);
+        $this->assertStringContainsString($name2, $xml);
+        $this->assertStringContainsString($item, $xml);
     }
 
     /**
@@ -140,6 +140,6 @@ class VoucherLineTest extends XmlTestCase
         $xml = $this->toXml($this->voucherLine);
 
         $this->assertXmlContainsTagWithValue('description', substr($description, 0, 255), $xml);
-        $this->assertNotContains($description, $xml);
+        $this->assertStringNotContainsString($description, $xml);
     }
 }
