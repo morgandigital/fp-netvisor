@@ -2,7 +2,7 @@
 
 namespace Xi\Netvisor\Resource\Xml;
 
-class ProductBookKeepingDetails
+class ProductBookkeepingDetails
 {
     private $defaultVatPercent;
     private $defaultDomesticAccountNumber;
