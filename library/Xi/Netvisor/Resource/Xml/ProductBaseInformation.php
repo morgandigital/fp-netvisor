@@ -75,9 +75,13 @@ class ProductBaseInformation
         $this->isActive = $isActive;
         $this->isSalesProduct = $isSalesProduct;
         $this->inventoryEnabled = $inventoryEnabled;
-        $this->countryOfOrigin = new AttributeElement(
-            $countryOfOrigin, array('type' => 'ISO-3166')
-        );
+        if (!empty($countryOfOrigin)) {
+            $this->countryOfOrigin = new AttributeElement(
+                $countryOfOrigin, array('type' => 'ISO-3166')
+            );
+        } else {
+            $this->countryOfOrigin = $countryOfOrigin;
+        }
     }
 
     /**
