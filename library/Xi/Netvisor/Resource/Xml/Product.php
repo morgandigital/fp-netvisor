@@ -15,6 +15,8 @@ class Product extends Root
         ProductBookkeepingDetails $productBookkeepingDetails = null,
         ProductAdditionalInformation $productAdditionalInformation = null
     ) {
+        parent::__construct();
+
         $this->productBaseInformation = $productBaseInformation;
         $this->productBookkeepingDetails = $productBookkeepingDetails;
         $this->productAdditionalInformation = $productAdditionalInformation;
