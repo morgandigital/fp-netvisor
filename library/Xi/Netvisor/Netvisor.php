@@ -15,6 +15,7 @@ use Xi\Netvisor\Resource\Xml\SalesInvoice;
 use Xi\Netvisor\Resource\Xml\PurchaseInvoice;
 use Xi\Netvisor\Resource\Xml\PurchaseInvoiceState;
 use Xi\Netvisor\Resource\Xml\Voucher;
+use Xi\Netvisor\Resource\Xml\Product;
 use Xi\Netvisor\Serializer\Naming\LowercaseNamingStrategy;
 
 /**
@@ -199,6 +200,36 @@ class Netvisor
     }
 
     /**
+     * List products.
+     *
+     * @return null|string
+     */
+    public function getProducts()
+    {
+        return $this->get(
+            'productlist',
+        );
+    }
+
+    /**
+     * List products that have changed since given date.
+     *
+     * Giving a keyword would override the changed since parameter.
+     *
+     * @param DateTime $changedSince
+     * @return null|string
+     */
+    public function getProductsChangedSince(DateTime $changedSince)
+    {
+        return $this->get(
+            'productlist',
+            [
+                'changedsince' => $changedSince->format('Y-m-d'),
+            ]
+        );
+    }
+
+    /**
      * Get details for a product identified by Netvisor id.
      *
      * @param int $id
@@ -209,6 +240,32 @@ class Netvisor
         return $this->get(
             'getproduct',
             [
+                'id' => $id,
+            ]
+        );
+    }
+
+    /**
+     * @param Product $product
+     * @return null|string
+     */
+    public function sendProduct(Product $product)
+    {
+        return $this->requestWithBody($product, 'product', ['method' => 'add']);
+    }
+
+    /**
+     * @param Product $product
+     * @param int $id
+     * @return null|string
+     */
+    public function updateProduct(Product $product, int $id)
+    {
+        return $this->requestWithBody(
+            $product,
+            'product',
+            [
+                'method' => 'edit',
                 'id' => $id,
             ]
         );
