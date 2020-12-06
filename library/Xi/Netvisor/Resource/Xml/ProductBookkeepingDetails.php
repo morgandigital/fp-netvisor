@@ -4,24 +4,24 @@ namespace Xi\Netvisor\Resource\Xml;
 
 class ProductBookkeepingDetails
 {
-    private $defaultVatPercent;
+    private $defaultVatPercentage;
     private $defaultDomesticAccountNumber;
     private $defaultEuAccountNumber;
     private $defaultOutsideEuAccountnumber;
 
     /**
-     * @param string $defaultVatPercent
+     * @param string $defaultVatPercentage
      * @param string $defaultDomesticAccountNumber
      * @param string $defaultEuAccountNumber
      * @param string $defaultOutsideEuAccountnumber
      */
     public function __construct(
-        $defaultVatPercent,
+        $defaultVatPercentage,
         $defaultDomesticAccountNumber = null,
         $defaultEuAccountNumber = null,
         $defaultOutsideEuAccountnumber = null
     ) {
-        $this->defaultVatPercent = $defaultVatPercent;
+        $this->defaultVatPercentage = $defaultVatPercentage;
         $this->defaultDomesticAccountNumber = $defaultDomesticAccountNumber;
         $this->defaultEuAccountNumber = $defaultEuAccountNumber;
         $this->defaultOutsideEuAccountnumber = $defaultOutsideEuAccountnumber;
