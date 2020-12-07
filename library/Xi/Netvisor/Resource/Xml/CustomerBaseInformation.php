@@ -5,14 +5,22 @@ namespace Xi\Netvisor\Resource\Xml;
 class CustomerBaseInformation
 {
     private $externalIdentifier;
+    private $organizationUnitNumber;
     private $name;
+    private $nameExtension;
     private $streetAddress;
+    private $additionalAddressLine;
     private $city;
     private $postNumber;
     private $country;
+    private $customerGroupName;
     private $phonenumber;
+    private $faxnumber;
     private $email;
-    private $isprivatecustomer = 1;
+    private $homepageUri;
+    private $isActive;
+    private $isPrivateCustomer = 1;
+    private $emailInvoicingAddress;
 
     /**
      * @param string $name
@@ -33,6 +41,86 @@ class CustomerBaseInformation
         $this->city = $city;
         $this->postNumber = $postNumber;
         $this->country = $country;
+    }
+
+    /**
+     * @param string $number
+     * @return self
+     */
+    public function setOrganizationUnitNumber($number)
+    {
+        $this->organizationUnitNumber = $number;
+        return $this;
+    }
+
+    /**
+     * @param string $nameExtension
+     * @return self
+     */
+    public function setNameExtension($nameExtension)
+    {
+        $this->nameExtension = $nameExtension;
+        return $this;
+    }
+
+    /**
+     * @param string $additionalAddressLine
+     * @return self
+     */
+    public function setAdditionalAddressLine($additionalAddressLine)
+    {
+        $this->additionalAddressLine = $additionalAddressLine;
+        return $this;
+    }
+
+    /**
+     * @param string $customerGroupName
+     * @return self
+     */
+    public function setCustomerGroupName($customerGroupName)
+    {
+        $this->customerGroupName = $customerGroupName;
+        return $this;
+    }
+
+    /**
+     * @param string $number
+     * @return self
+     */
+    public function setFaxNumber($number)
+    {
+        $this->faxNumber = $number;
+        return $this;
+    }
+
+    /**
+     * @param string $uri
+     * @return self
+     */
+    public function setHomepageUri($uri)
+    {
+        $this->homepageUri = $uri;
+        return $this;
+    }
+
+    /**
+     * @param int $active
+     * @return self
+     */
+    public function setIsActive($active)
+    {
+        $this->isActive = $active;
+        return $this;
+    }
+
+    /**
+     * @param string $emailInvoicingAddress
+     * @return self
+     */
+    public function setEmailInvoicingAddress($emailInvoicingAddress)
+    {
+        $this->emailInvoicingAddress = $emailInvoicingAddress;
+        return $this;
     }
 
     /**
@@ -62,11 +150,11 @@ class CustomerBaseInformation
     public function setBusinessId($id)
     {
         $this->externalIdentifier = null;
-        $this->isprivatecustomer = 1;
+        $this->isPrivateCustomer = 1;
 
         if ($id) {
             $this->externalIdentifier = $id;
-            $this->isprivatecustomer = 0;
+            $this->isPrivateCustomer = 0;
         }
 
         return $this;
