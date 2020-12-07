@@ -2,6 +2,8 @@
 
 namespace Xi\Netvisor\Resource\Xml;
 
+use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
+
 class OfficeContactAddress
 {
     private $streetAddress;
@@ -24,6 +26,12 @@ class OfficeContactAddress
         $this->streetAddress = $streetAddress;
         $this->postNumber = $postNumber;
         $this->city = $city;
-        $this->country = $country;
+        if (!empty($country)) {
+            $this->country = new AttributeElement(
+                $country, array('type' => 'ISO-3166')
+            );
+        } else {
+            $this->country = $country;
+        }
     }
 }
