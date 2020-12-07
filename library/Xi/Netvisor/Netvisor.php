@@ -200,6 +200,22 @@ class Netvisor
     }
 
     /**
+     * Get details for a customer identified by Netvisor id.
+     *
+     * @param int $id
+     * @return null|string
+     */
+    public function getCustomer($id)
+    {
+        return $this->get(
+            'getcustomer',
+            [
+                'id' => $id,
+            ]
+        );
+    }
+
+    /**
      * List products.
      *
      * @return null|string
