@@ -11,15 +11,24 @@ class Customer extends Root
 {
     private $customerBaseInformation;
     private $customerFinvoiceDetails;
+    private $customerDeliveryDetails;
+    private $customerContactDetails;
+    private $customerAdditionalInformation;
 
     public function __construct(
         CustomerBaseInformation $customerBaseInformation,
-        CustomerFinvoiceDetails $customerFinvoiceDetails = null
+        CustomerFinvoiceDetails $customerFinvoiceDetails = null,
+        CustomerDeliveryDetails $customerDeliveryDetails = null,
+        CustomerContactDetails $customerContactDetails = null,
+        CustomerAdditionalInformation $customerAdditionalInformation = null
     ) {
         parent::__construct();
         
         $this->customerBaseInformation = $customerBaseInformation;
         $this->customerFinvoiceDetails = $customerFinvoiceDetails;
+        $this->customerDeliveryDetails = $customerDeliveryDetails;
+        $this->customerContactDetails = $customerContactDetails;
+        $this->customerAdditionalInformation = $customerAdditionalInformation;
     }
 
     public function getDtdPath()
