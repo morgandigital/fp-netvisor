@@ -16,6 +16,7 @@ use Xi\Netvisor\Resource\Xml\PurchaseInvoice;
 use Xi\Netvisor\Resource\Xml\PurchaseInvoiceState;
 use Xi\Netvisor\Resource\Xml\Voucher;
 use Xi\Netvisor\Resource\Xml\Product;
+use Xi\Netvisor\Resource\Xml\Office;
 use Xi\Netvisor\Serializer\Naming\LowercaseNamingStrategy;
 
 /**
@@ -141,6 +142,35 @@ class Netvisor
             [
                 'method' => 'edit',
                 'id' => $id,
+            ]
+        );
+    }
+
+    /**
+     * @param Office $office
+     * @param int $customer_id Customer netvisor key
+     * @return null|string
+     */
+    public function sendOffice(Office $office, int $customer_id)
+    {
+        return $this->requestWithBody($office, 'office', ['method' => 'add', 'customer_id' => $customerid]);
+    }
+
+    /**
+     * @param Office $office
+     * @param int $customer_id Customer netvisor key
+     * @param int $id Office netvisor key
+     * @return null|string
+     */
+    public function updateOffice(Office $office, int $customer_id, int $id)
+    {
+        return $this->requestWithBody(
+            $office,
+            'office',
+            [
+                'method' => 'edit',
+                'customerid' => $customer_id,
+                'officeid' => $id,
             ]
         );
     }
