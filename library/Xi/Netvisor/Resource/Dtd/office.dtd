@@ -1,0 +1,17 @@
+<!DOCTYPE root [
+<!ELEMENT root (office)>
+<!ELEMENT office (name, phonenumber?, telefaxnumber?, officecontactaddress?, officevisitaddress?, officefinvoicedetails?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT phonenumber (#PCDATA)>
+<!ELEMENT telefaxnumber (#PCDATA)>
+<!ELEMENT officecontactaddress (streetaddress, postnumber, city, country)>
+<!ELEMENT streetaddress (#PCDATA)>
+<!ELEMENT postnumber (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+	<!ATTLIST country type CDATA "ISO-3166">
+<!ELEMENT officevisitaddress (streetaddress, postnumber, city, country)>
+<!ELEMENT officefinvoicedetails (finvoiceaddress, finvoiceroutercode)>
+<!ELEMENT finvoiceaddress (#PCDATA)>
+<!ELEMENT finvoiceroutercode (#PCDATA)>
+]>
