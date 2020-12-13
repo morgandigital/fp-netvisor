@@ -318,6 +318,40 @@ class Netvisor
     }
 
     /**
+     * List sales invoices.
+     *
+     * @param string $listtype 'preinvoice' for order list
+     * @return null|string
+     */
+    public function getSalesInvoices($listtype = '')
+    {
+        return $this->get(
+            'salesinvoicelist',
+            [
+                'ListType' => $listtype,
+            ]
+        );
+    }
+
+    /**
+     * List sales invoices modified since given date.
+     *
+     * @param DateTime $modifiedSince
+     * @param string $listtype 'preinvoice' for order list
+     * @return null|string
+     */
+    public function getSalesInvoicesModifiedSince(\DateTime $modifiedSince, $listtype = '')
+    {
+        return $this->get(
+            'salesinvoicelist',
+            [
+                'ListType' => $listtype,
+                'lastmodifiedstart' => $modifiedSince->format('Y-m-d'),
+            ]
+        );
+    }
+
+    /**
      * Get details for a invoice identified by Netvisor id.
      *
      * @param int $id
