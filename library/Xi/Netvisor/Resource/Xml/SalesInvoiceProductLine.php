@@ -138,7 +138,7 @@ class SalesInvoiceProductLine
      */
     public function setInventoryId($inventory_id)
     {
-        $this->salesinvoiceproductlineinventoryid($inventory_id);
+        $this->salesinvoiceproductlineinventoryid = $inventory_id;
         return $this;
     }
 }
