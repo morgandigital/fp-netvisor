@@ -28,6 +28,7 @@ class SalesInvoice extends Root
     private $deliveryaddresstown;
     private $deliveryaddresscountrycode;
     private $paymentTermNetDays;
+    private $sellerName;
 
     /**
      * @XmlList(entry = "invoiceline")
@@ -165,6 +166,16 @@ class SalesInvoice extends Root
     public function setYourReference($text)
     {
         $this->salesinvoiceyourreference = $text;
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return self
+     */
+    public function setSellerName($text)
+    {
+        $this->sellerName = $text;
         return $this;
     }
 
