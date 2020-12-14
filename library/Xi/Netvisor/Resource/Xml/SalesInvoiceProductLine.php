@@ -22,6 +22,7 @@ class SalesInvoiceProductLine
     private $salesInvoiceProductLineDiscountPercentage;
     private $salesinvoiceproductlinefreetext;
     private $accountingaccountsuggestion;
+    private $salesinvoiceproductlineinventoryid;
 
     /**
      * @XmlList(inline = true, entry = "dimension")
@@ -128,6 +129,16 @@ class SalesInvoiceProductLine
     public function setDiscountPercentage($discountPercentage)
     {
         $this->salesInvoiceProductLineDiscountPercentage = $discountPercentage;
+        return $this;
+    }
+
+    /**
+     * @param int $inventory_id
+     * @return self
+     */
+    public function setInventoryId($inventory_id)
+    {
+        $this->salesinvoiceproductlineinventoryid($inventory_id);
         return $this;
     }
 }
