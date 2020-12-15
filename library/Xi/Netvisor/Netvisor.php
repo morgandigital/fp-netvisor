@@ -334,6 +334,24 @@ class Netvisor
     }
 
     /**
+     * Get inventory by warehouse.
+     *
+     * @param int $product_id List by product netvisor key
+     * @param int $warehouse_id List by warehouse id
+     * @return null|string
+     */
+    public function getInventoryByWarehouse($product_id = '', $warehouse_id = '')
+    {
+        return $this->get(
+            'inventorybywarehouse',
+            [
+                'productid' => $product_id,
+                'inventoryplaceid' => $warehouse_id
+            ]
+        );
+    }
+
+    /**
      * List sales personnel.
      *
      * @return null|string
