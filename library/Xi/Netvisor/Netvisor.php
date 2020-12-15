@@ -334,6 +334,18 @@ class Netvisor
     }
 
     /**
+     * List sales personnel.
+     *
+     * @return null|string
+     */
+    public function getSalesPersonnelList()
+    {
+        return $this->get(
+            'salespersonnellist'
+        );
+    }
+
+    /**
      * List sales invoices modified since given date.
      *
      * @param DateTime $modifiedSince
