@@ -16,6 +16,8 @@ class SalesInvoice extends Root
     private $salesInvoiceDate;
     private $salesinvoicereferencenumber;
     private $salesInvoiceAmount;
+    private $sellerName;
+    private $invoiceType;
     private $salesInvoiceStatus;
     private $salesinvoicefreetextbeforelines;
     private $salesinvoicefreetextafterlines;
@@ -28,8 +30,6 @@ class SalesInvoice extends Root
     private $deliveryaddresstown;
     private $deliveryaddresscountrycode;
     private $paymentTermNetDays;
-    private $sellerName;
-    private $invoiceType;
 
     /**
      * @XmlList(entry = "invoiceline")
