@@ -2,6 +2,8 @@
 
 namespace Xi\Netvisor\Resource\Xml;
 
+use Xi\Netvisor\Resource\Xml\Component\AttributeElement;
+
 class CustomerAdditionalInformation
 {
     private $comment;
@@ -44,6 +46,12 @@ class CustomerAdditionalInformation
         $this->yourDefaultReference = $yourDefaultReference;
         $this->defaultTextBeforeInvoiceLines = $defaultTextBeforeInvoiceLines;
         $this->defaultTextAfterInvoiceLines = $defaultTextAfterInvoiceLines;
-        $this->defaultPaymentTerm = $defaultPaymentTerm;
+        if (!empty($defaultPaymentTerm)) {
+            $this->defaultPaymentTerm = new AttributeElement(
+                $defaultPaymentTerm, array('type' => 'customer')
+            );
+        } else {
+            $this->defaultPaymentTerm = $defaultPaymentTerm;
+        }
     }
 }
