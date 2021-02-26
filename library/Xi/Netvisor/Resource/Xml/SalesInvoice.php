@@ -18,6 +18,7 @@ class SalesInvoice extends Root
     private $salesinvoicereferencenumber;
     private $salesInvoiceAmount;
     private $sellerName;
+    private $sellerIdentifier;
     private $invoiceType;
     private $salesInvoiceStatus;
     private $salesinvoicefreetextbeforelines;
@@ -178,6 +179,18 @@ class SalesInvoice extends Root
     public function setSellerName($text)
     {
         $this->sellerName = $text;
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return self
+     */
+    public function setSellerIdentifier($text)
+    {
+        $this->sellerIdenfifier = new AttributeElement(
+            $text, array('type' => 'netvisor')
+        );
         return $this;
     }
 
