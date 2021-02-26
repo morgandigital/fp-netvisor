@@ -188,7 +188,7 @@ class SalesInvoice extends Root
      */
     public function setSellerIdentifier($text)
     {
-        $this->sellerIdenfifier = new AttributeElement(
+        $this->sellerIdentifier = new AttributeElement(
             $text, array('type' => 'netvisor')
         );
         return $this;
