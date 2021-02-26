@@ -469,6 +469,26 @@ class Netvisor
     }
 
     /**
+     * Update sales invoice status.
+     *
+     * @param string $netvisor_key Invoice Netvisor ID
+     * @param string $netvisor_key_list Invoices Netvisor ID list separated with comma
+     * @param string $status To which status invoice/invoices will be set
+     * @return null|string
+     */
+    public function updateSalesInvoiceStatus($netvisor_key, $netvisor_key_list, $status)
+    {
+        return $this->get(
+            'updatesalesinvoicestatus',
+            [
+                'netvisorkey' => $netvisor_key,
+                'netvisorkeylist' => $netvisor_key_list,
+                'status' => $status,
+            ]
+        );
+    }
+
+    /**
      * @param  Root              $root
      * @param  string            $service
      * @param  array             $params
