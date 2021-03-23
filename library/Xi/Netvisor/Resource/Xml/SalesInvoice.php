@@ -32,6 +32,7 @@ class SalesInvoice extends Root
     private $deliveryaddresstown;
     private $deliveryaddresscountrycode;
     private $paymentTermNetDays;
+    private $secondname;
 
     /**
      * @XmlList(entry = "invoiceline")
@@ -211,6 +212,18 @@ class SalesInvoice extends Root
     public function setInvoiceDueDate($invoiceDueDate)
     {
         $this->salesInvoiceDueDate = $invoiceDueDate->format('Y-m-d');
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return self
+     */
+    public function setSecondName($text)
+    {
+        $this->secondname = new AttributeElement(
+            $text, array('type' => 'netvisor')
+        );
         return $this;
     }
 
