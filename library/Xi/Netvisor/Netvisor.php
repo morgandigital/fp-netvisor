@@ -453,6 +453,22 @@ class Netvisor
     }
 
     /**
+     * Retrieves a list of Dimensions.
+     *
+     * @param null|string $showhidden When 1 then also hidden dimension are returned in response
+     * @return null|string
+     */
+    public function getDimensionlist($showhidden = 0)
+    {
+        return $this->get(
+            'dimensionlist',
+            [
+                'showhidden' => $showhidden,
+            ]
+        );
+    }
+
+    /**
      * @param string  $service
      * @param array   $params
      * @return null|string
