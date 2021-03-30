@@ -15,6 +15,7 @@ class SalesInvoice extends Root
     private $salesinvoicenumber;
     private $salesInvoiceDate;
     private $salesInvoiceDueDate;
+    private $salesInvoiceDeliveryDate;
     private $salesinvoicereferencenumber;
     private $salesInvoiceAmount;
     private $sellerName;
@@ -212,6 +213,16 @@ class SalesInvoice extends Root
     public function setInvoiceDueDate($invoiceDueDate)
     {
         $this->salesInvoiceDueDate = $invoiceDueDate->format('Y-m-d');
+        return $this;
+    }
+
+    /**
+     * @param DateTime $invoiceDeliveryDate
+     * @return self
+     */
+    public function setInvoiceDeliveryDate($invoiceDeliveryDate)
+    {
+        $this->salesInvoiceDeliveryDate = $invoiceDeliveryDate->format('Y-m-d');
         return $this;
     }
 
