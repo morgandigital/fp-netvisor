@@ -26,6 +26,7 @@ class SalesInvoice extends Root
     private $salesinvoicefreetextafterlines;
     private $salesinvoiceourreference;
     private $salesinvoiceyourreference;
+    private $salesinvoiceprivatecomment;
     private $invoicingCustomerIdentifier;
     private $deliveryaddressname;
     private $deliveryaddressline;
@@ -171,6 +172,16 @@ class SalesInvoice extends Root
     public function setYourReference($text)
     {
         $this->salesinvoiceyourreference = $text;
+        return $this;
+    }
+
+    /**
+     * @param string $text
+     * @return self
+     */
+    public function setPrivateComment($text)
+    {
+        $this->salesinvoiceprivatecomment = $text;
         return $this;
     }
 
