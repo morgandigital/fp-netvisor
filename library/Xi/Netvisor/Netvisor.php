@@ -248,12 +248,14 @@ class Netvisor
     /**
      * List products.
      *
+     * @param array $params
      * @return null|string
      */
-    public function getProducts()
+    public function getProducts($params = [])
     {
         return $this->get(
             'productlist',
+            $params
         );
     }
 
