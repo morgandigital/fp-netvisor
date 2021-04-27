@@ -153,7 +153,7 @@ class Netvisor
      */
     public function sendOffice(Office $office, int $customer_id)
     {
-        return $this->requestWithBody($office, 'office', ['method' => 'add', 'customer_id' => $customerid]);
+        return $this->requestWithBody($office, 'office', ['method' => 'add', 'customerid' => $customerid]);
     }
 
     /**
